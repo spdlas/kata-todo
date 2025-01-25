@@ -1,2 +1,1 @@
-
-https://kata-todo-dkwrnobp2-spdlas-projects-ca6dafb1.vercel.app
+https://kata-todo-git-master-spdlas-projects-ca6dafb1.vercel.app/
