@@ -37,7 +37,7 @@ export default class NewTaskForm extends Component {
             onChange={this.onLabelChange}
             /* eslint-disable-next-line jsx-a11y/no-autofocus */
             autoFocus
-            /* eslint-disable-next-line react/destructuring-assignment */
+            {/* eslint-disable-next-line react/destructuring-assignment */}
             value={this.state.label}
           />
         </form>

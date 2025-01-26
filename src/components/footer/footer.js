@@ -5,23 +5,33 @@ import TasksFilter from '../tasks-filter';
 
 import './footer.scss';
 
-const Footer = ({ toDo, onClearAll, filter, onFilterChange }) => {
+// eslint-disable-next-line object-curly-newline
+function Footer({ toDo, onClearAll, filter, onFilterChange }) {
   return (
     <footer className="footer">
-      <span className="todo-count">{toDo} items left</span>
+      <span className="todo-count">
+        {toDo}
+        items left
+      </span>
       <TasksFilter filter={filter} onFilterChange={onFilterChange} />
-      <button className="clear-completed" onClick={onClearAll}>
+      <button type="button" className="clear-completed" onClick={onClearAll}>
         Clear completed
       </button>
     </footer>
   );
-};
+}
 
 Footer.propTypes = {
-  toDo: PropTypes.number.isRequired,
-  onClearAll: PropTypes.func.isRequired,
+  toDo: PropTypes.number,
+  onClearAll: PropTypes.func,
   filter: PropTypes.string.isRequired,
-  onFilterChange: PropTypes.func.isRequired,
+  onFilterChange: PropTypes.func,
+};
+
+Footer.defaultProps = {
+  toDo: 0,
+  onFilterChange: () => {},
+  onClearAll: () => {},
 };
 
 export default Footer;

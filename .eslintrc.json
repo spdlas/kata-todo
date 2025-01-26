@@ -16,7 +16,7 @@
     "ecmaFeatures": {
       "jsx": true
     },
-
+    "ecmaVersion":  "latest",
     "sourceType": "module"
   },
   "plugins": ["react", "prettier", "import"],
@@ -30,6 +30,9 @@
     "react/prop-types": 0,
     "import/no-unresolved": [2, { "caseSensitive": false }],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "max-len": ["error", 120],
+    "comma-dangle": "off",
+    "no-plusplus": "off",
     "import/order": [
       2,
       {
@@ -46,9 +49,6 @@
     ]
   },
   "settings": {
-    "react": {
-      "version": "detect"
-    },
     "import/resolver": {
       "node": {
         "extensions": [".js", ".jsx", ".ts", ".tsx"],
