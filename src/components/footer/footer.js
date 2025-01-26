@@ -1,7 +1,9 @@
-import TasksFilter from '../tasks-filter';
 import PropTypes from 'prop-types';
+import React from 'react';
+
+import TasksFilter from '../tasks-filter';
+
 import './footer.scss';
-import React from "react";
 
 const Footer = ({ toDo, onClearAll, filter, onFilterChange }) => {
   return (
@@ -16,7 +18,7 @@ const Footer = ({ toDo, onClearAll, filter, onFilterChange }) => {
 };
 
 Footer.propTypes = {
-  toDo: PropTypes.number.isRequired, // Добавьте эту строку
+  toDo: PropTypes.number.isRequired,
   onClearAll: PropTypes.func.isRequired,
   filter: PropTypes.string.isRequired,
   onFilterChange: PropTypes.func.isRequired,

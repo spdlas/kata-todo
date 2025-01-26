@@ -5,17 +5,18 @@
   },
   "ignorePatterns": ["node_modules", "dist", "build"],
   "extends": [
-    "eslint:airbnb",
+    "eslint:recommended",
     "plugin:react/recommended",
     "plugin:prettier/recommended",
     "plugin:import/errors",
-    "plugin:import/warnings"
+    "plugin:import/warnings",
+    "airbnb"
   ],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
     },
-    "ecmaVersion":  "latest",
+
     "sourceType": "module"
   },
   "plugins": ["react", "prettier", "import"],
@@ -45,6 +46,9 @@
     ]
   },
   "settings": {
+    "react": {
+      "version": "detect"
+    },
     "import/resolver": {
       "node": {
         "extensions": [".js", ".jsx", ".ts", ".tsx"],

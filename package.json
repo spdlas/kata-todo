@@ -6,13 +6,9 @@
     "babel-eslint": "^10.1.0",
     "cra-template": "1.2.0",
     "date-fns": "^4.1.0",
-<<<<<<< Updated upstream
-    "eslint-plugin-react-hooks": "^4.6.2",
-=======
     "eslint": "^8.57.1",
-    "eslint-plugin-react": "^7.37.4",
-    "eslint-plugin-react-hooks": "^5.1.0",
->>>>>>> Stashed changes
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-react-hooks": "^4.6.2",
     "husky": "^9.1.7",
     "lint-staged": "^15.4.1",
     "prop-types": "^15.8.1",
@@ -50,22 +46,15 @@
     ]
   },
   "devDependencies": {
-<<<<<<< Updated upstream
     "@eslint/js": "^9.19.0",
     "eslint": "^8.57.1",
-=======
->>>>>>> Stashed changes
-    "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-html": "^8.1.2",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-prettier": "^5.2.3",
-<<<<<<< Updated upstream
     "eslint-plugin-react": "^7.37.4",
     "globals": "^15.14.0",
-=======
->>>>>>> Stashed changes
     "prettier": "^3.4.2",
     "sass-loader": "^16.0.4"
   }
