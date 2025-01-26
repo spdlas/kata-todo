@@ -1,5 +1,7 @@
 import TasksFilter from '../tasks-filter';
+import PropTypes from 'prop-types';
 import './footer.scss';
+import React from "react";
 
 const Footer = ({ toDo, onClearAll, filter, onFilterChange }) => {
   return (
@@ -11,6 +13,13 @@ const Footer = ({ toDo, onClearAll, filter, onFilterChange }) => {
       </button>
     </footer>
   );
+};
+
+Footer.propTypes = {
+  toDo: PropTypes.number.isRequired, // Добавьте эту строку
+  onClearAll: PropTypes.func.isRequired,
+  filter: PropTypes.string.isRequired,
+  onFilterChange: PropTypes.func.isRequired,
 };
 
 export default Footer;
