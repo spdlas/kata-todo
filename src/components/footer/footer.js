@@ -23,15 +23,13 @@ function Footer({ toDo, onClearAll, filter, onFilterChange }) {
 
 Footer.propTypes = {
   toDo: PropTypes.number,
-  onClearAll: PropTypes.func,
+  onClearAll: PropTypes.func.isRequired,
   filter: PropTypes.string.isRequired,
-  onFilterChange: PropTypes.func,
+  onFilterChange: PropTypes.func.isRequired,
 };
 
 Footer.defaultProps = {
   toDo: 0,
-  onFilterChange: () => {},
-  onClearAll: () => {},
 };
 
 export default Footer;
