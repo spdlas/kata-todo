@@ -2,8 +2,10 @@ import React from 'react';
 import { formatDistanceToNow } from 'date-fns';
 import PropTypes from 'prop-types';
 
+import './task.scss';
+
 // eslint-disable-next-line object-curly-newline
-function Task({ label, done, onDeleted, onToggleDone, dateStamp }) {
+function Task({ label, done, onDeleted, onToggleDone, dateStamp, minStamp, secStamp }) {
   let className = '';
   if (done) {
     className += 'completed';
@@ -15,8 +17,19 @@ function Task({ label, done, onDeleted, onToggleDone, dateStamp }) {
     <li className={className}>
       <div className="view">
         <input className="toggle" type="checkbox" onClick={onToggleDone} />
-        <label htmlFor="toggle">
+        <label htmlFor="toggle" className="test">
           <span className="description">{label}</span>
+          <div className="control">
+            <button type="button" className="icon icon-play">
+              ▶
+            </button>
+            <button type="button" className="icon icon-pause">
+              ⏸
+            </button>
+            <span className="timer">
+              {minStamp}:{secStamp}
+            </span>
+          </div>
           <span className="created">{formattedDate}</span>
         </label>
         {/* Жалуется что явно не задан тип кнопки... */}

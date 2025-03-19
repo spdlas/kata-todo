@@ -13,10 +13,10 @@ export default class App extends Component {
   // eslint-disable-next-line react/state-in-constructor
   state = {
     todoTasks: [
-      this.createTask('Completed task'),
-      this.createTask('Active task'),
-      this.createTask('Another task'),
-      this.createTask('Another task'),
+      this.createTask('Completed task', 15, 30),
+      this.createTask('Active task', 11, 30),
+      this.createTask('Another task', 16, 30),
+      this.createTask('Another task', 12, 30),
     ],
     filter: 'all', // active, all, done
   };
@@ -47,17 +47,6 @@ export default class App extends Component {
     }));
   };
 
-  // Добавляем задачу
-  addTask = (text) => {
-    const newTask = this.createTask(text);
-    this.setState(({ todoTasks }) => {
-      const newArr = [...todoTasks, newTask];
-      return {
-        todoTasks: newArr,
-      };
-    });
-  };
-
   // Фильтрация задачи
   onFilterChange = (filter) => {
     this.setState({ filter });
@@ -78,6 +67,14 @@ export default class App extends Component {
     }
   };
 
+  // Добавляем задачу
+  addTask = ({ label, minStamp, secStamp }) => {
+    const newTask = this.createTask(label, minStamp, secStamp);
+    this.setState(({ todoTasks }) => ({
+      todoTasks: [...todoTasks, newTask],
+    }));
+  };
+
   toggleProperty(arr, id, propName) {
     const idx = arr.findIndex((el) => el.id === id);
     const oldItem = arr[idx];
@@ -87,18 +84,20 @@ export default class App extends Component {
   }
 
   // Создаем задачу в стейт
-  createTask(label) {
+  createTask(label, minStamp, secStamp) {
     return {
       label,
       done: false,
       id: this.maxId++,
       dateStamp: Date.now(),
+      minStamp,
+      secStamp,
+      timerRun: false,
     };
   }
 
   render() {
     const { todoTasks, filter } = this.state;
-
     // Отрисовка задач
     const visibleTasks = this.filters(todoTasks, filter);
 

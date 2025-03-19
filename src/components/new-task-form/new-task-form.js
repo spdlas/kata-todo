@@ -8,6 +8,24 @@ export default class NewTaskForm extends Component {
   // eslint-disable-next-line react/state-in-constructor
   state = {
     label: '',
+    minStamp: '',
+    secStamp: '',
+  };
+
+  keyUp = (evt) => {
+    const { label, minStamp, secStamp } = this.state;
+    evt.preventDefault();
+
+    if (evt.code === 'Enter' && label.trim()) {
+      // eslint-disable-next-line no-restricted-globals
+      if (isNaN(minStamp) || isNaN(secStamp)) {
+        this.setState({ label: '', minStamp: '', secStamp: '' });
+      } else {
+        // eslint-disable-next-line react/destructuring-assignment
+        this.props.onItemAdded({ label, minStamp: Number(minStamp), secStamp: Number(secStamp) });
+        this.setState({ label: '', minStamp: '', secStamp: '' });
+      }
+    }
   };
 
   onLabelChange = (evt) => {
@@ -16,20 +34,46 @@ export default class NewTaskForm extends Component {
     });
   };
 
+  onMinChange = (evt) => {
+    if (evt.target.value > 60 || evt.target.value < 0) {
+      return;
+    }
+    this.setState({
+      minStamp: evt.target.value,
+    });
+  };
+
+  onSecondChange = (evt) => {
+    if (evt.target.value > 60 || evt.target.value < 0) {
+      return;
+    }
+    this.setState({
+      secStamp: evt.target.value,
+    });
+  };
+
   onSubmit = (evt) => {
     evt.preventDefault();
+
+    const { label, minStamp, secStamp } = this.state;
+    if (!label.trim()) return;
+
     // eslint-disable-next-line react/destructuring-assignment
-    this.props.onItemAdded(this.state.label);
+    this.props.onItemAdded({ label, minStamp, secStamp });
     this.setState({
       label: '',
+      minStamp: '',
+      secStamp: '',
     });
   };
 
   render() {
+    const { label, minStamp, secStamp } = this.state;
     return (
       <header className="header">
         <h1>todos</h1>
-        <form onSubmit={this.onSubmit}>
+        {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
+        <form onSubmit={this.onSubmit} onKeyUp={this.keyUp}>
           <input
             type="text"
             className="new-todo"
@@ -38,7 +82,21 @@ export default class NewTaskForm extends Component {
             /* eslint-disable-next-line jsx-a11y/no-autofocus */
             autoFocus
             /* eslint-disable-next-line react/destructuring-assignment */
-            value={this.state.label}
+            value={label}
+          />
+          <input
+            className="new-todo-form__timer"
+            type="number"
+            placeholder="Min"
+            onChange={this.onMinChange}
+            value={minStamp}
+          />
+          <input
+            className="new-todo-form__timer"
+            type="number"
+            placeholder="Sec"
+            onChange={this.onSecondChange}
+            value={secStamp}
           />
         </form>
       </header>
