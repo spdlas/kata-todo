@@ -52,7 +52,6 @@ export default class App extends Component {
     this.setState({ filter });
   };
 
-  // Зачем ему тут this?
   // eslint-disable-next-line class-methods-use-this
   filters = (items, filter) => {
     switch (filter) {
@@ -73,6 +72,17 @@ export default class App extends Component {
     this.setState(({ todoTasks }) => ({
       todoTasks: [...todoTasks, newTask],
     }));
+  };
+
+  timer = (minStamp, secStamp) => {
+    let time = minStamp * 60 + secStamp;
+    const interval = setInterval(() => {
+      time--;
+      console.log(time);
+      if (time === 0) {
+        clearInterval(interval);
+      }
+    }, 1000);
   };
 
   toggleProperty(arr, id, propName) {
@@ -98,7 +108,6 @@ export default class App extends Component {
 
   render() {
     const { todoTasks, filter } = this.state;
-    console.log(todoTasks);
     // Отрисовка задач
     const visibleTasks = this.filters(todoTasks, filter);
 
@@ -108,7 +117,12 @@ export default class App extends Component {
       <section className="todoapp">
         <NewTaskForm onItemAdded={this.addTask} />
         <section className="main">
-          <TaskList tasks={visibleTasks} onDeleted={this.deleteTask} onToggleDone={this.onToggleDone} />
+          <TaskList
+            tasks={visibleTasks}
+            onDeleted={this.deleteTask}
+            onToggleDone={this.onToggleDone}
+            timer={this.timer}
+          />
           <Footer onClearAll={this.onClearAll} toDo={moreCount} filter={filter} onFilterChange={this.onFilterChange} />
         </section>
       </section>

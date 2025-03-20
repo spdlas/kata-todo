@@ -52,7 +52,6 @@ export default class App extends Component {
     this.setState({ filter });
   };
 
-  // Зачем ему тут this?
   // eslint-disable-next-line class-methods-use-this
   filters = (items, filter) => {
     switch (filter) {
