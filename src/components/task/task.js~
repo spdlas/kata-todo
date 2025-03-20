@@ -17,12 +17,13 @@ class Task extends Component {
       isRunning: false,
     };
     this.timer = null;
-  } 
+  }
 
   componentWillUnmount() {
     clearInterval(this.timer);
   }
-
+  
+  //Таймер
   startTimer = () => {
     const { isRunning } = this.state;
     if (!isRunning) {

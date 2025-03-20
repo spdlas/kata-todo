@@ -23,6 +23,7 @@ class Task extends Component {
     clearInterval(this.timer);
   }
 
+  // Таймер
   startTimer = () => {
     const { isRunning } = this.state;
     if (!isRunning) {
