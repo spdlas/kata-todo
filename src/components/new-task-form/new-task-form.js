@@ -90,8 +90,8 @@ export default class NewTaskForm extends Component {
             placeholder="Min"
             onChange={this.onMinChange}
             value={minStamp}
-            min='0'
-            max='60'
+            min="0"
+            max="60"
           />
           <input
             className="new-todo-form__timer"
@@ -99,8 +99,8 @@ export default class NewTaskForm extends Component {
             placeholder="Sec"
             onChange={this.onSecondChange}
             value={secStamp}
-            min='0'
-            max='60'
+            min="0"
+            max="60"
           />
         </form>
       </header>
