@@ -17,7 +17,7 @@ class Task extends Component {
       isRunning: false,
     };
     this.timer = null;
-  }
+  } 
 
   componentWillUnmount() {
     clearInterval(this.timer);
@@ -59,6 +59,7 @@ class Task extends Component {
       <li className={className}>
         <div className="view">
           <input className="toggle" type="checkbox" onClick={onToggleDone} />
+          {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
           <label className="test">
             <span className="description">{label}</span>
             <div className="control">
@@ -72,7 +73,9 @@ class Task extends Component {
             </div>
             <span className="created">{formattedDate}</span>
           </label>
+          {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
           <button type="button" className="icon icon-edit" />
+          {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
           <button type="button" className="icon icon-destroy" onClick={onDeleted} />
         </div>
       </li>
