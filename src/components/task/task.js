@@ -19,11 +19,28 @@ class Task extends Component {
     this.timer = null;
   }
 
+  componentDidUpdate(prevProps) {
+    const { minStamp, secStamp } = this.props;
+
+    if (minStamp !== prevProps.minStamp || secStamp !== prevProps.secStamp) {
+      this.setState({
+        minutes: minStamp,
+        seconds: secStamp,
+      });
+
+      // eslint-disable-next-line react/destructuring-assignment
+      if (this.state.isRunning) {
+        clearInterval(this.timer);
+        this.setState({ isRunning: false });
+      }
+    }
+  }
+
   componentWillUnmount() {
     clearInterval(this.timer);
   }
 
-  // Таймер
+  // Запуск таймера
   startTimer = () => {
     const { isRunning } = this.state;
     if (!isRunning) {
@@ -43,6 +60,7 @@ class Task extends Component {
     }
   };
 
+  // Пауза таймера
   pauseTimer = () => {
     clearInterval(this.timer);
     this.setState({ isRunning: false });
@@ -59,7 +77,7 @@ class Task extends Component {
     return (
       <li className={className}>
         <div className="view">
-          <input className="toggle" type="checkbox" onClick={onToggleDone} />
+          <input className="toggle" type="checkbox" onClick={onToggleDone} checked={done} />
           {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
           <label className="test">
             <span className="description">{label}</span>
@@ -96,8 +114,8 @@ Task.propTypes = {
   onDeleted: PropTypes.func.isRequired,
   onToggleDone: PropTypes.func.isRequired,
   dateStamp: PropTypes.instanceOf(Date),
-  minStamp: PropTypes.number.isRequired,
-  secStamp: PropTypes.number.isRequired,
+  minStamp: PropTypes.number.isRequired, // Передаем первоначальные минуты
+  secStamp: PropTypes.number.isRequired, // Передаем первоначальные секунды
 };
 
 export default Task;
